@@ -2,13 +2,13 @@ UNQ AI Internship Pre-Interview Test Assignment:
 
 
 Using Python, construct a class without importing any modules (such as numpy) given the following guidelines:
--Given 2 inputs, data and shape, construct a tensor using nested lists.
--A tensor is a general term for n-dimension matrix. (order goes scalar, vector, matrix, tensor)
--Data and shape inputs are given as lists of numbers. Data can be any number (float, int, etc.), but shape needs to be a list of positive integers.
--Data and shape inputs can be lists of any length.
--If shape is empty list, the output tensor should also be an empty list
--The constructed tensor can be saved as an instance variable, printed in standard output, or both.
--If too many data numbers, cut it off after the tensor fills up. If not enough, pad the tensor w/ zeroes.
+1. Given 2 inputs, data and shape, construct a tensor using nested lists.
+2. A tensor is a general term for n-dimension matrix. (order goes scalar, vector, matrix, tensor)
+3. Data and shape inputs are given as lists of numbers. Data can be any number (float, int, etc.), but shape needs to be a list of positive integers.
+4. Data and shape inputs can be lists of any length.
+5. If shape is empty list, the output tensor should also be an empty list
+6. The constructed tensor can be saved as an instance variable, printed in standard output, or both.
+7. If too many data numbers, cut it off after the tensor fills up. If not enough, pad the tensor w/ zeroes.
 
 
 Examples:
