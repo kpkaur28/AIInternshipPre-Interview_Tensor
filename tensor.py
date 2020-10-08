@@ -7,6 +7,10 @@ class Tensor:
 
     def initializeTensor(self):
         tensor = []
+        
+        ##Corner case: If shape is empty list, we return an empty tensor
+        if len(self.shape) == 0: 
+            return tensor
     
         def rec(n,first):
             if first:
