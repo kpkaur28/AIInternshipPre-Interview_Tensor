@@ -11,45 +11,50 @@ class Tensor:
         ##Corner case: If shape is empty list, we return an empty tensor
         if len(self.shape) == 0: 
             return tensor
-    
-        def rec(n,first):
+
+        ##Recurse through the shape to build an empty tensor with zeros
+        def initialize(n,first):
+            ## n represents index of shape variable recurring backwards
+            ## first is a boolean value to check if tensor is initialized before
             if first:
-              temp = [0] * self.shape[n] 
+              tensor.append([0] * self.shape[n])
               first = False
-              tensor.append(temp)
+            
             else:  
-              te = []
+              temp = []
               for i in range(self.shape[n]):
-                tp = copy.deepcopy(tensor[0])
-                te.append(tp)
+                ## Deep copy gives new object of the same type
+                ## rather than references of the object
+                temp.append(copy.deepcopy(tensor[0]))    
               tensor.clear()
-              tensor.append(te) 
+              tensor.append(temp) 
 
             if n-1 == -1:
               return
-            rec(n-1,first)
+            
+            initialize(n-1,first)
         
-        rec((len(self.shape)-1),True)  
+        initialize((len(self.shape)-1),True)  
         return tensor[0]
     
+    ##Fill the data in the empty tensor through recursion
     def fillData(self):
         tensor = self.initializeTensor()
         
-        def dfs(L, counter):
-            if counter == -1:
-                return
+        def populate(L):
+            ##If the element is not a list, grab the element
             if not isinstance(L[0], list):
                 for i in range(len(L)):
-                    
+                    ##If data array is empty return an empty tensor with zeros
                     if len(self.data) == 0:
                         return
                     L[i] = self.data.pop(0)
                 return                
             
             for i in range(len(L)):
-                dfs(L[i],counter-1)
+                populate(L[i])
             
-        dfs(tensor, len(self.shape)-1)
+        populate(tensor)
         return tensor
 
   
@@ -58,8 +63,9 @@ class Tensor:
 
 data0 = [0, 1, 2, 3, 4, 5, 0.1, 0.2, -3]
 shape0 = [2,3,2]
+tensor = Tensor(data0, shape0)
 data1 = [0, 1, 2, 3, 4, 5, 0.1, 0.2, -3, -2, -1, 3, 2, 1]
 shape1 = [5, 2]
-tensor = Tensor(data0, shape0)
-
+tensor1 = Tensor(data1, shape1)
 tensor.printTensor()
+tensor1.printTensor()
