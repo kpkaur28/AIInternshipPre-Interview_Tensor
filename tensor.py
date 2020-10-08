@@ -48,6 +48,7 @@ class Tensor:
                     ##If data array is empty return an empty tensor with zeros
                     if len(self.data) == 0:
                         return
+                    ## populate the elements
                     L[i] = self.data.pop(0)
                 return                
             
@@ -64,8 +65,9 @@ class Tensor:
 data0 = [0, 1, 2, 3, 4, 5, 0.1, 0.2, -3]
 shape0 = [2,3,2]
 tensor = Tensor(data0, shape0)
+tensor.printTensor()
+
 data1 = [0, 1, 2, 3, 4, 5, 0.1, 0.2, -3, -2, -1, 3, 2, 1]
 shape1 = [5, 2]
 tensor1 = Tensor(data1, shape1)
-tensor.printTensor()
 tensor1.printTensor()
